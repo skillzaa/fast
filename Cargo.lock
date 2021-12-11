@@ -75,6 +75,7 @@ dependencies = [
  "cairo-rs",
  "fl2rust",
  "fltk",
+ "fltk-flow",
 ]
 
 [[package]]
@@ -90,6 +91,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f79b7d7f79ca306c569b3f2cceec87e1efa74310ee452651497a6f5c475308af"
 dependencies = [
  "bitflags",
+ "fltk-sys",
+ "paste",
+]
+
+[[package]]
+name = "fltk-build"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "24266753a0d6074553424e95db889a351f46416a293ae0b9512039cbbe9ab275"
+
+[[package]]
+name = "fltk-flow"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "76307d1359628e0e4940d9b7177506c64b7852e636fdee8c1da69ec658e7b359"
+dependencies = [
+ "cc",
+ "fltk",
+ "fltk-build",
  "fltk-sys",
  "paste",
 ]

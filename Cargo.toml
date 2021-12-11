@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 fltk = "^1.2"
 cairo-rs = "0.14"
-
+fltk-flow = "0.1.2"
 
 
 [build-dependencies]

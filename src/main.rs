@@ -1,43 +1,60 @@
-use fltk::{prelude::*,*,group::*};
-fn main(){
-let app = app::App::default();
-let mut win = window::Window::
-new(100,100,800,900,"Hulk Setup");
-win.make_resizable(true);
-//-------------------------
- 
-let card01 = card(0);
-// card01.center_of_parent();
-//-------------------------
-win.end();
-win.show();
-app.run().unwrap();
-}
-fn card(y:i32)->group::Group{
-  let x = 20;
-  let mut pack = group::Group::default()
-  .with_size(400,300)
-  .with_pos(x, y);
+#![allow(unused_mut)]
 
-  // pack.set_type(group::PackType::Vertical);
-  // pack.set_spacing(10);
-  let mut input = input::Input::
-  new(x, y+20, 350, 50, "Input");
-  //input.center_of_parent();
-  
+use fltk::{prelude::*, enums::*, *};
+use fltk_flow::Flow;
 
-  let mut btn = button::Button::
-  new(x,y+200,50,40,"ok");
-  // btn.center_of_parent();
-    btn.set_callback( move |_b|{
-      event_handler("button clicked".to_string());
-    });
-  pack.end();
-  // pack.auto_layout();  
-  pack
+fn main() {
+    let a = app::App::default().with_scheme(app::Scheme::Gtk);
+
+    let mut win = window::Window::default().with_size(640, 480);
+    let mut flow = Flow::default_fill();
+    //============== widgets
+//......................urow
+
+
+    // let mut f = frame::Frame::default()
+    //     .with_label("Username:");
+    // f.set_label_size(25);
+       let f = 
+       written_text("delet ethe text",44); 
+
+
+//......................urow
+
+    let inp = input::Input::default().with_size(150, 30);
+    let btn_change_data = button::Button::default().with_size(100, 30).with_label("Change");
+    //--this is the seperator
+    let mut sep = frame::Frame::default().with_size(20, 2);
+
+
+    
+    flow.end();
+    win.end();
+    win.resizable(&flow);
+    win.show();
+    
+    sep.set_color(Color::Black);
+    sep.set_frame(FrameType::FlatBox);
+   
+    
+//=< means expand to left
+flow.rule(&inp, "^<=>");
+flow.rule(&btn_change_data, "^<");
+flow.rule(&sep, "=<^");
+flow.rule(&f, "=<^");
+    
+    a.run().unwrap();
 }
 
 
 fn event_handler(msg:String){
 println!("event_handler message:: {}",msg);
+}
+
+fn written_text(txt:&str,size:i32)->frame::Frame{
+
+    let mut f = frame::Frame::default()
+        .with_label(txt);
+       f.set_label_size(size);
+f
 }
