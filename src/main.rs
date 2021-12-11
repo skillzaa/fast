@@ -1,11 +1,18 @@
-use fltk::{prelude::*,*};
-
+use fltk::{prelude::*,*,group::*};
+// use fltk_flex::{Flex,FlexType};
 fn main(){
 let app = app::App::default();
 let mut win = window::Window::
 new(100,100,600,600,"Hulk Setup");
 //-------------------------
-let btn_one = btn_middle(&win);
+let mut flex = Flex::default().size_of_parent().column();
+    let _expanding = button::Button::default().with_label("Expanding");
+    let mut normal = button::Button::default().with_label("Normal");
+    let mut normal02 = button::Button::default().with_label("Normal");
+    // flex.set_size(&mut normal, 30);
+    flex.end();
+
+// let btn_one = btn_middle(&win);
 //-------------------------
 win.end();
 win.show();
