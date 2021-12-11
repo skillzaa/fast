@@ -8,3 +8,8 @@ edition = "2021"
 [dependencies]
 fltk = "^1.2"
 cairo-rs = "0.14"
+
+
+
+[build-dependencies]
+fl2rust = "0.4"

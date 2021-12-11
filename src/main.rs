@@ -1,42 +1,27 @@
-use fltk::{prelude::*, *};
+use fltk::{prelude::*,*};
 
-fn main() {
-    let app = app::App::default();
-
-    let mut win = window::Window::new(250,250,500,650,"Hulk Settings");
-    win.make_resizable(true);
-   let gp = get_group();
-
-    win.end();
-    win.show();
-    
-   
-
-
-    app.run().unwrap();
+fn main(){
+let app = app::App::default();
+let mut win = window::Window::
+new(100,100,600,600,"Hulk Setup");
+//-------------------------
+let btn_one = btn_middle(&win);
+//-------------------------
+win.end();
+win.show();
+app.run().unwrap();
 }
 
-fn callback(height:&str){
-    println!("This height of the button is: {}",height);
-}
-
-fn get_group()->group::Pack{
-    let gp = group::Pack::
-    new(20,20,400,500,"Group 01");
-     let input = fltk::input::Input::
-     new(20,20,150,40,"Text Area");
-     //input.center_of(&win);
- 
-     let mut btn = button::Button::new(25,250,100,75,"Bingoo!!!");
-     // btn.center_of(&win);
-     gp.end();
-      // but.set_callback(|b| b.set_label("Clicked!"));
-    btn.set_callback(move |_b| 
-        {
-           // b.set_label("new_title");
-
-           callback(&input.value());
-        });
-
-     gp
+fn btn_middle(win:&window::Window)->button::Button{
+  let mut b = button::Button::
+  default()
+  .with_size(70, 30)
+  .with_label("Set")
+  .center_of(win);
+  //-- call back
+  b.set_callback(move |b|{
+    b.set_label("clicked");
+    // println!("{:?}",b.label()); //dont delete
+  });
+  b
 }

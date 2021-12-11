@@ -73,8 +73,15 @@ name = "fast"
 version = "0.1.0"
 dependencies = [
  "cairo-rs",
+ "fl2rust",
  "fltk",
 ]
+
+[[package]]
+name = "fl2rust"
+version = "0.4.13"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fd92ec33727670f7cff14926cecf979b1b574c9dd446afd56252da04dcd104ac"
 
 [[package]]
 name = "fltk"
