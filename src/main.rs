@@ -1,38 +1,43 @@
 use fltk::{prelude::*,*,group::*};
-// use fltk_flex::{Flex,FlexType};
 fn main(){
 let app = app::App::default();
 let mut win = window::Window::
-new(100,100,600,600,"Hulk Setup");
+new(100,100,800,900,"Hulk Setup");
 win.make_resizable(true);
 //-------------------------
-let mut scroll = Scroll::
-new(100,100,300,200,"Scroll");
-
-let btn_one = btn_middle(10,10);
-let btn_two = btn_middle(40,40);
-   
-
-    scroll.end();
-
+ 
+let card01 = card(0);
+// card01.center_of_parent();
 //-------------------------
 win.end();
 win.show();
 app.run().unwrap();
 }
+fn card(y:i32)->group::Group{
+  let x = 20;
+  let mut pack = group::Group::default()
+  .with_size(400,300)
+  .with_pos(x, y);
 
-fn btn_middle(x:i32,y:i32)->button::Button{
-  let mut b = button::Button::
-  new(x,y,600,400,"Button");
-  //-- call back
-  b.set_callback(move |b|{
-    b.set_label("clicked");
-    event_handler();
-    // println!("{:?}",b.label()); //dont delete
-  });
-  b
+  // pack.set_type(group::PackType::Vertical);
+  // pack.set_spacing(10);
+  let mut input = input::Input::
+  new(x, y+20, 350, 50, "Input");
+  //input.center_of_parent();
+  
+
+  let mut btn = button::Button::
+  new(x,y+200,50,40,"ok");
+  // btn.center_of_parent();
+    btn.set_callback( move |_b|{
+      event_handler("button clicked".to_string());
+    });
+  pack.end();
+  // pack.auto_layout();  
+  pack
 }
 
-fn event_handler(){
-println!("ok");
+
+fn event_handler(msg:String){
+println!("event_handler message:: {}",msg);
 }
